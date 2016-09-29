@@ -42,7 +42,7 @@ By default, your feature will be placed in `src/app/FEATURE_NAME`. If you wish t
 component to be inside a different feature folder), you can specify the explicit path.
 
 ##### Smart vs Dumb Component
-Read about smart vs dumb components (here)[https://gist.github.com/btroncone/a6e4347326749f938510#utilizing-container-components].
+Read about smart vs dumb components [here](https://gist.github.com/btroncone/a6e4347326749f938510#utilizing-container-components).
 The gist is, if your feature should have access to the store (including reducers, actions, and effects), you should create
 a **smart** component. If your component doesn't need access to the store at all, it's probably a **dumb** component, or 
 a component that is for simple `Input` and `Output`.
