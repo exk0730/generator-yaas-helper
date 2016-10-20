@@ -1,13 +1,11 @@
 <% if(isSmart) { %>
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-
-import { getStore } from '../testing';
+import { StoreModule } from '@ngrx/store';
 
 import { <%= inCamelCase %>Reducer, I<%= className %>State } from './<%= featureName %>.reducer';
 import { <%= className %> } from './<%= featureName %>.component';
-import { <%= className %>Actions } from './<%= featureName %>.actions';
-import { SharedModule } from 'shared';
+import * as <%= inCamelCase %>Actions from './<%= featureName %>.actions';
 
 describe('<%= className %>Component', () => {
     const spy = jasmine.createSpy('<%= inCamelCase %>').and.callFake(function (state, action) {
@@ -21,7 +19,7 @@ describe('<%= className %>Component', () => {
             declarations: [<%= className %>],
             imports: [
                 SharedModule,
-                getStore({<%= inCamelCase %>: spy})
+                StoreModule.provideStore({<%= inCamelCase %>: spy})
             ],
             schemas: [NO_ERRORS_SCHEMA]
         });

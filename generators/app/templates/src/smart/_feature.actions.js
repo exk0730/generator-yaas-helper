@@ -1,15 +1,13 @@
-import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 
-const CATEGORY = '[<%= className %>]';
+export const ActionTypes = {
+    EXAMPLE: <'[<%= className %>] Example'>('[<%= className %>] Example')
+};
 
-@Injectable()
-export class <%= className %>Actions {
-    static DEFAULT_ACTION = `${CATEGORY} Default Action`;
-    static defaultAction(): Action {
-        return {
-            type: <%= className %>Actions.DEFAULT_ACTION
-        };
-    }
+export class ExampleAction implements Action {
+    type = ActionTypes.EXAMPLE;
+
+    constructor(public payload: any) {}
 }
 
+export type Actions = ExampleAction /* | ...AnotherAction | AnotherAnotherAction | etc... */;

@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Actions, Effect } from '@ngrx/effects';
-import { Observable } from 'rxjs/Rx';
+import { Actions, Effect, toPayload } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+import { of } from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
 
-import { IAppStore } from 'shared';
-import { <%= className %>Actions } from './<%= featureName %>.actions';
+import * as <%= inCamelCase %>Actions from './<%= featureName %>.actions';
+<% if (hasService) { %>import { <%= className %>Service } from './<%= featureName %>.service';<% } %>
 
 @Injectable()
 export class <%= className %>Effects {
-    constructor(private updates$: Actions, private store: Store<IAppStore>) {}
+    constructor(private updates$: Actions<% if (hasService) { %>, private service: <%= className %>Service<% } %>) {}
+
+    /*
+    @Effect() example$: Observable<Action> = this.updates$
+        .ofType(<%= inCamelCase %>Actions.ActionTypes.EXAMPLE)
+        .map(toPayload)
+        ...
+    */
 }
